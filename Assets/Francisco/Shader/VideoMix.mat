@@ -36,6 +36,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _SampleTexture2D_1bc55ad1bfea449a8bdd42f9cd0275ed_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 8a92a6d093d725a43a22edd9fe57bcb7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Video1:
         m_Texture: {fileID: 8400000, guid: 8ef07d294740722469840dd54cb15d55, type: 2}
         m_Scale: {x: 1, y: 1}
@@ -46,6 +50,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Video3:
         m_Texture: {fileID: 8400000, guid: 737491ca827e5fd4899ffbb1579a205f, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Video4:
+        m_Texture: {fileID: 8400000, guid: dfc50e5c1c22b2a42b50e74deb29c605, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Video5:
+        m_Texture: {fileID: 8400000, guid: e7bcbe7fa1628784aa1b43adeafb3127, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VideoStory:
+        m_Texture: {fileID: 2800000, guid: 21ff8356f88a7c44cb61dfb9b06e5053, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -62,7 +78,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Knob1: 0.661
+    - _DitherSpread: 703.2
+    - _Knob1: 0.912
+    - _Knob2: 0.764
+    - _Knob3: 0.237
+    - _Lerp1: -10.87
+    - _Pixelsize: 722.6
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
