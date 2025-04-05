@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+struct Coefficients
+{
+    public float A;
+    public float B;
+    public float C;
+    public Coefficients(float a, float b, float c)
+    {
+        A = a; B = b; C = c;
+    }
+}
+
+enum Param { None, Alpha, Beta, Omega }
 
 public class Pixeldrawer : MonoBehaviour
 {
@@ -22,7 +34,33 @@ public class Pixeldrawer : MonoBehaviour
     public const int ROW = height / H;
 
     private Texture2D texture;
-    // Start is called before the first frame update
+
+    public float paramStep = 0.05f;
+
+    float al_o, be_o, om_o;
+    float al = 0.8f, be = 0.5f, om = 0.9f;
+
+    Coefficients A1, A2, A3; 
+    Coefficients V1, V2, V3;
+
+    //These are the final computed intensities of audio distortions (a1, a2, a3) and visual distortions respectively (v1, v2, v3)
+    //These are computed as dot products between their respective coefficient vectors and (al, be, om)
+    // a_i = dot_product(A_i, Vec(al, be, om))
+    // v_i = dot_product(V_i, Vec(al, be, om))
+    float a1, a2, a3;
+    float v1, v2, v3;
+
+    Param selectedParam = Param.None;
+
+    Coefficients[] arrangements = new Coefficients[]
+    {
+        new Coefficients(1, 1, -1),
+        new Coefficients(1, -1, 1),
+        new Coefficients(-1, 1, 1),
+        new Coefficients(-1, -1, 1),
+        new Coefficients(-1, 1, -1),
+        new Coefficients(1, -1, -1)
+    };
 
     void draw_rectangle_lines(int x, int y, int w, int h, Color color)
     {
@@ -62,24 +100,41 @@ public class Pixeldrawer : MonoBehaviour
         // Assign to the RawImage
         rawImage.texture = texture;
 
-        // Draw something
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                DrawPixel(i, j, Color.black);
-            }
-        }
-
-        texture.Apply(); // Apply the changes
+        RandomizeBaseParams();
+        A1 = GenerateCoeffs();
+        A2 = GenerateCoeffs();
+        A3 = GenerateCoeffs();
     }
 
     void Update()
     {
-        draw_rectangle(0, 0, 475, 275, Color.grey);
+        // =============================
+        // LOGIC
+        // =============================
+        HandleInput();
+
+        a1 = A1.A * al + A1.B * be + A1.C * om;
+        a2 = A2.A * al + A2.B * be + A2.C * om;
+        a3 = A3.A * al + A3.B * be + A3.C * om;
+
+        v1 = V1.A * al + V1.B * be + V1.C * om;
+        v2 = V2.A * al + V2.B * be + V2.C * om;
+        v3 = V3.A * al + V3.B * be + V3.C * om;
+
+
+        // ==============================
+        // DRAWING
+        // =============================
+        draw_rectangle(0, 0, width, height, Color.grey);
+
         draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom, wave_widget_w, wave_widget_h, Color.green);
+        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom, (int)(wave_widget_w*om), wave_widget_h, Color.blue);
+
         draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + wave_widget_spacing + wave_widget_h, wave_widget_w, wave_widget_h, Color.green);
+        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + wave_widget_spacing + wave_widget_h, (int)(wave_widget_w * be), wave_widget_h, Color.blue);
+
         draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + 2*(wave_widget_spacing + wave_widget_h) , wave_widget_w, wave_widget_h, Color.green);
+        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + 2 * (wave_widget_spacing + wave_widget_h), (int)(wave_widget_w * al), wave_widget_h, Color.blue);
 
         texture.Apply();
     }
@@ -101,5 +156,41 @@ public class Pixeldrawer : MonoBehaviour
         }
         texture.SetPixels(fillColorArray);
         texture.Apply();
+    }
+
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) selectedParam = Param.Alpha;
+        if (Input.GetKeyDown(KeyCode.B)) selectedParam = Param.Beta;
+        if (Input.GetKeyDown(KeyCode.O)) selectedParam = Param.Omega;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) AdjustSelectedParam(-paramStep);
+        if (Input.GetKeyDown(KeyCode.RightArrow)) AdjustSelectedParam(paramStep);
+    }
+
+    void AdjustSelectedParam(float delta)
+    {
+        switch (selectedParam)
+        {
+            case Param.Alpha: al = Mathf.Clamp01(al + delta); break;
+            case Param.Beta: be = Mathf.Clamp01(be + delta); break;
+            case Param.Omega: om = Mathf.Clamp01(om + delta); break;
+        }
+    }
+
+    void RandomizeBaseParams()
+    {
+        al_o = 0.1f + 0.9f * Random.value;
+        be_o = 0.1f + 0.9f * Random.value;
+        om_o = 0.1f + 0.9f * Random.value;
+    }
+
+    Coefficients GenerateCoeffs()
+    {
+        Coefficients baseCoeffs = arrangements[Random.Range(0, arrangements.Length)];
+        float A = baseCoeffs.A * Random.value;
+        float B = baseCoeffs.B * Random.value;
+        float C = baseCoeffs.C * Mathf.Abs((A * al_o + B * be_o) / om_o);
+        return new Coefficients(A, B, C);
     }
 }
