@@ -50,6 +50,9 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject enableOnConnected;
 
+
+    public Text debugText;
+
     void OnEnable()
     {
         coherenceBridge.onLiveQuerySynced.AddListener(OnLiveQuerySynced);
@@ -63,6 +66,15 @@ public class PlayerManager : MonoBehaviour
             CoherenceConnect();
 
         }
+
+
+        var xrSettingsEnabled = UnityEngine.XR.XRSettings.enabled;
+        var isDeviceActive = UnityEngine.XR.XRSettings.isDeviceActive;
+        // debug
+        debugText.text = (xrSettingsEnabled ? "xr enabled" : "xr disabled")
+         + "\n " + (isDeviceActive ? "device active" : "device not active")
+         + "\n " + (isVR ? "vr" : "not vr");
+
     }
 
     void CoherenceConnect()
@@ -101,7 +113,6 @@ public class PlayerManager : MonoBehaviour
         // turn off the UI
         // try to auto connect etc
 
-
         isDoctor = false;
 
         // connect!
@@ -110,6 +121,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Connect()
     {
+        // turn off coherence connection ui, in any case.
+        coherenceWorldUI.SetActive(false);
         // turn off selection ui
         selectPlayerTypeUI.SetActive(false);
         // turn on the gameplay stuff.

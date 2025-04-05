@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
-  m_Name: doctors numbers
+  m_Name: video canvas
   m_EditorClassIdentifier: 
-  id: 31a322b7eab7c45838f5111459ca0a7e
-  selfId: f96c0986df2b040b9a46247912fdd165
-  editorTarget: {fileID: 2059616484093828668, guid: 31a322b7eab7c45838f5111459ca0a7e, type: 3}
+  id: f26f5f1e7eda04719a3917bb322e394e
+  selfId: 19c44d4b52bb24acf87af36434257209
+  editorTarget: {fileID: 1606651014679086735, guid: f26f5f1e7eda04719a3917bb322e394e, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 3698503261724606546
+    rid: 3698503261724606526
   objectInstantiator:
-    rid: 3698503253466284085
+    rid: 3698503261724606527
   references:
     version: 2
     RefIds:
-    - rid: 3698503253466284085
-      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
-      data: 
-    - rid: 3698503261724606546
+    - rid: 3698503261724606526
       type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
-        prefab: {fileID: 2059616484093828668, guid: 31a322b7eab7c45838f5111459ca0a7e, type: 3}
+        prefab: {fileID: 1606651014679086735, guid: f26f5f1e7eda04719a3917bb322e394e, type: 3}
+    - rid: 3698503261724606527
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data: 
