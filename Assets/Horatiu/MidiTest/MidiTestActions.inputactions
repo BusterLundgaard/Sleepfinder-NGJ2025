@@ -1,0 +1,74 @@
+{
+    "name": "MidiTestActions",
+    "maps": [
+        {
+            "name": "knobMap",
+            "id": "4ebea79d-0452-44ee-ba60-2f311b0124d4",
+            "actions": [
+                {
+                    "name": "knob1",
+                    "type": "Value",
+                    "id": "214572b1-8d9e-4863-8ab1-8d7a88c4443a",
+                    "expectedControlType": "MidiValue",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "knob2",
+                    "type": "Button",
+                    "id": "23e3b5be-1eaf-4901-97d2-47ab312744fe",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "knob3",
+                    "type": "Button",
+                    "id": "28a5131f-ee6d-4169-9ae9-40e253a78dba",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "66066b0e-9591-4c49-9df6-cb0b02c6f1da",
+                    "path": "<MidiDevice>/control021",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "knob1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c060017-84d0-4f65-8880-8e67f5816ee6",
+                    "path": "<MidiDevice>/control022",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "knob2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2cea06d2-2483-4265-8068-90cc5a0573ce",
+                    "path": "<MidiDevice>/control023",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "knob3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

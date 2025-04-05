@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Heartbeat : MonoBehaviour
 {
     public AudioClip[] audioClips;
+    public AudioMixerGroup heartbeatMixerGroup;
 
     [Header("Toggle heartbeat")]
     public bool beating = true;
@@ -49,6 +51,7 @@ public class Heartbeat : MonoBehaviour
         if (index >= 0)
         {
             source.clip = audioClips[index];
+            source.outputAudioMixerGroup = heartbeatMixerGroup;
             source.volume = heartBeatsVolumes[index];
             source.pitch = pitchBpmMultiplierCurve.Evaluate(bpmMultiplier);
             source.Play();
