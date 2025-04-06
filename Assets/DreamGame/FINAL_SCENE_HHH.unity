@@ -4290,7 +4290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2266042505944250501, guid: 476ea1fd16239c34dbd1c9dcff281fda, type: 3}
       propertyPath: bpmMultiplier
-      value: 1.91
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2266042505944250501, guid: 476ea1fd16239c34dbd1c9dcff281fda, type: 3}
       propertyPath: heartbeatMixerGroup
