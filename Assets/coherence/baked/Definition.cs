@@ -20,7 +20,7 @@ namespace Coherence.Generated
 
     public class Definition : IDefinition
     {
-        public const string schemaId = "2cc8278e1e80335b24a395ed75b6bc60710208ca";
+        public const string schemaId = "0eeaa20d53a9442fd482d9439bc5c41dd2291dc2";
         public const uint InternalWorldPosition = 0;
         public const uint InternalWorldOrientation = 1;
         public const uint InternalLocalUserComponent = 2;
@@ -174,7 +174,6 @@ namespace Coherence.Generated
         public const uint InternalGenericFieldULong3 = 150;
         public const uint InternalGenericFieldColor0 = 151;
         public const uint InternalGenericFieldColor1 = 152;
-        public const uint Internal_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371 = 153;
         public const uint InternalAuthorityRequest = 0;
         public const uint InternalAuthorityTransfer = 1;
         public const uint InternalQuerySynced = 2;
@@ -339,7 +338,6 @@ namespace Coherence.Generated
             { 150, "GenericFieldULong3" },
             { 151, "GenericFieldColor0" },
             { 152, "GenericFieldColor1" },
-            { 153, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371" },
         };
 
         public static string ComponentNameForTypeId(uint typeId)
@@ -679,8 +677,6 @@ namespace Coherence.Generated
                     return GenericFieldColor0.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case InternalGenericFieldColor1:
                     return GenericFieldColor1.Deserialize(referenceSimulationFrame, inProtocolStream);
-                case Internal_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371:
-                    return _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.Deserialize(referenceSimulationFrame, inProtocolStream);
                 default:
                     throw new System.ArgumentOutOfRangeException(nameof(componentType),
                         $"Missing serialization implementation for a component: {componentType}");
@@ -998,8 +994,6 @@ namespace Coherence.Generated
                     return GenericFieldColor0.Serialize((GenericFieldColor0)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case InternalGenericFieldColor1:
                     return GenericFieldColor1.Serialize((GenericFieldColor1)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
-                case Internal_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371:
-                    return _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.Serialize((_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 default:
                     logger.Error(Coherence.Log.Error.DefinitionMissingComponentImplementation, ("component", data.GetComponentType()));
                     return 0;
