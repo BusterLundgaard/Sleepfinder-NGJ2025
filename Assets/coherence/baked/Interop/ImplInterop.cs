@@ -1883,8 +1883,9 @@ namespace Coherence.Generated
                     val.knob2 = orig.knob2;
                     val.knob3 = orig.knob3;
                     val.knob1 = orig.knob1;
+                    val.timelineTime = orig.timelineTime;
 
-                    updater.UpdateComponent(entity, componentType, val, 12, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }

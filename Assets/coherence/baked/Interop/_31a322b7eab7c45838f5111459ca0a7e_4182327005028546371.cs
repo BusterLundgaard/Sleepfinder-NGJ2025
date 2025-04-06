@@ -31,6 +31,8 @@ namespace Coherence.Generated
             public System.Single knob3;
             [FieldOffset(8)]
             public System.Single knob1;
+            [FieldOffset(12)]
+            public System.Single timelineTime;
         }
 
         public void ResetFrame(AbsoluteSimulationFrame frame)
@@ -41,12 +43,14 @@ namespace Coherence.Generated
             knob3SimulationFrame = frame;
             FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
             knob1SimulationFrame = frame;
+            FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.timelineTimeMask;
+            timelineTimeSimulationFrame = frame;
         }
 
         public static unsafe _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
         {
-            if (dataSize != 12) {
-                throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 12) " +
+            if (dataSize != 16) {
+                throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 16) " +
                     "for component with ID 153");
             }
 
@@ -62,6 +66,7 @@ namespace Coherence.Generated
             orig.knob2 = comp->knob2;
             orig.knob3 = comp->knob3;
             orig.knob1 = comp->knob1;
+            orig.timelineTime = comp->timelineTime;
 
             return orig;
         }
@@ -76,13 +81,16 @@ namespace Coherence.Generated
         public static uint knob1Mask => 0b00000000000000000000000000000100;
         public AbsoluteSimulationFrame knob1SimulationFrame;
         public System.Single knob1;
+        public static uint timelineTimeMask => 0b00000000000000000000000000001000;
+        public AbsoluteSimulationFrame timelineTimeSimulationFrame;
+        public System.Single timelineTime;
 
         public uint FieldsMask { get; set; }
         public uint StoppedMask { get; set; }
         public uint GetComponentType() => 153;
         public int PriorityLevel() => 100;
         public const int order = 0;
-        public uint InitialFieldsMask() => 0b00000000000000000000000000000111;
+        public uint InitialFieldsMask() => 0b00000000000000000000000000001111;
         public bool HasFields() => true;
         public bool HasRefFields() => false;
 
@@ -91,7 +99,7 @@ namespace Coherence.Generated
             return null;
         }
 
-        public int GetFieldCount() => 3;
+        public int GetFieldCount() => 4;
 
 
         
@@ -125,6 +133,8 @@ namespace Coherence.Generated
         private static readonly float _knob3_Max = 9223372036854775807f;
         private static readonly float _knob1_Min = -9223372036854775808f;
         private static readonly float _knob1_Max = 9223372036854775807f;
+        private static readonly float _timelineTime_Min = -9223372036854775808f;
+        private static readonly float _timelineTime_Max = 9223372036854775807f;
 
         public AbsoluteSimulationFrame? GetMinSimulationFrame()
         {
@@ -163,6 +173,13 @@ namespace Coherence.Generated
             }
 
             otherMask >>= 1;
+            if ((otherMask & 0x01) != 0)
+            {
+                this.timelineTimeSimulationFrame = other.timelineTimeSimulationFrame;
+                this.timelineTime = other.timelineTime;
+            }
+
+            otherMask >>= 1;
             StoppedMask |= other.StoppedMask;
 
             return this;
@@ -177,7 +194,7 @@ namespace Coherence.Generated
         {
             if (bitStream.WriteMask(data.StoppedMask != 0))
             {
-                bitStream.WriteMaskBits(data.StoppedMask, 3);
+                bitStream.WriteMaskBits(data.StoppedMask, 4);
             }
 
             var mask = data.FieldsMask;
@@ -224,6 +241,20 @@ namespace Coherence.Generated
             }
 
             mask >>= 1;
+            if (bitStream.WriteMask((mask & 0x01) != 0))
+            {
+
+                Coherence.Utils.Bounds.Check(data.timelineTime, _timelineTime_Min, _timelineTime_Max, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.timelineTime", logger);
+
+
+                var fieldValue = data.timelineTime;
+
+
+
+                bitStream.WriteFloat(fieldValue, FloatMeta.NoCompression());
+            }
+
+            mask >>= 1;
 
             return mask;
         }
@@ -233,7 +264,7 @@ namespace Coherence.Generated
             var stoppedMask = (uint)0;
             if (bitStream.ReadMask())
             {
-                stoppedMask = bitStream.ReadMaskBits(3);
+                stoppedMask = bitStream.ReadMaskBits(4);
             }
 
             var val = new _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371();
@@ -255,6 +286,12 @@ namespace Coherence.Generated
                 val.knob1 = bitStream.ReadFloat(FloatMeta.NoCompression());
                 val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
             }
+            if (bitStream.ReadMask())
+            {
+
+                val.timelineTime = bitStream.ReadFloat(FloatMeta.NoCompression());
+                val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.timelineTimeMask;
+            }
 
             val.StoppedMask = stoppedMask;
 
@@ -268,8 +305,9 @@ namespace Coherence.Generated
                 $" knob2: { this.knob2 }" +
                 $" knob3: { this.knob3 }" +
                 $" knob1: { this.knob1 }" +
-                $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(3, '0') }, " +
-                $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(3, '0') })";
+                $" timelineTime: { this.timelineTime }" +
+                $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(4, '0') }, " +
+                $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(4, '0') })";
         }
     }
 

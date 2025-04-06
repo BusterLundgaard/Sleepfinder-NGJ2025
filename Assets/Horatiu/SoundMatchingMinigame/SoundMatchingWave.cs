@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Polyfunks;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SoundMatchingWave : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Polyfunks2_Graph wave;
+
+
+
 }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using ToyBoxHHH;
+using System;
 
 public class TimelineController : MonoBehaviour
 {
     public PlayableDirector playableDirector;
     public bool pauseOnEnable = true;
+
 
     private void OnValidate()
     {
@@ -35,5 +37,6 @@ public class TimelineController : MonoBehaviour
             Pause();
         }
     }
+
 
 }

@@ -48,6 +48,7 @@ MonoBehaviour:
   knob1: 0
   knob2: 0
   knob3: 0
+  timelineTime: 0
 --- !u!114 &2140153905471127271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,7 @@ MonoBehaviour:
   - rid: 3698503253466284090
   - rid: 3698503253466284094
   - rid: 3698503261724606673
+  - rid: 3698503265698709528
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -309,6 +311,51 @@ MonoBehaviour:
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: knob1
+        monoAssemblyType: System.Single, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: DoctorsNumbers, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.FloatBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 3698503265698709528
+      type: {class: FloatBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 3698503265698709529
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 422becbd34d54166b055192ce9fb8539
+        archetypeData:
+          type: 4
+          minRange: -9223372036854775808
+          maxRange: 9223372036854775807
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 4
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 4182327005028546371}
+        coherenceSync: {fileID: 2140153905471127271}
+        interpolationSettings: {fileID: 0}
+    - rid: 3698503265698709529
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: timelineTime
         monoAssemblyType: System.Single, mscorlib
         required: 0
         enforcesLODingWhenFieldsOverriden: 1

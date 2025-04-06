@@ -23,6 +23,7 @@ namespace Polyfunks
         private double prevAmp;
 
         [Header("Visualization")]
+        public bool visualize = true;
         public int linePositions = 200;
 
         [SerializeField]
@@ -106,6 +107,9 @@ namespace Polyfunks
 
         private void Update_DrawPolyLine()
         {
+            if (!visualize)
+                return;
+
             if (pl == null)
                 return;
 
@@ -140,7 +144,7 @@ namespace Polyfunks
                         pl.SetPointPosition(i, Vector3.zero);
                         // point thickness is a multiplier of line thickness.
                         // hide the points that are over the limit.
-                        pl.SetPointThickness(i, i < linePositions ? 1 : 0); 
+                        pl.SetPointThickness(i, i < linePositions ? 1 : 0);
 
                     }
                     return;
@@ -199,7 +203,7 @@ namespace Polyfunks
                 for (int j = 0; j < oversample; j++)
                 {
                     graph.AudioThread_Tick(w);
-                    graphState = graph.GetPolyfunksState(); 
+                    graphState = graph.GetPolyfunksState();
 
                     // we multiply by 2*PI to be able to use Hz for the freq, spin and amp modulation
                     var w2Pi = w * TAU;
@@ -251,12 +255,14 @@ namespace Polyfunks
 
                 }
 
-                // extract data for visualization. polyPos is just the last poly calculated for these samples
-                var polyPos = projectedPoly;
-                visualizationData.Add(polyPos);
-                if (visualizationData.Count > linePositions)
-                    visualizationData.RemoveAt(0);
-
+                if (visualize)
+                {
+                    // extract data for visualization. polyPos is just the last poly calculated for these samples
+                    var polyPos = projectedPoly;
+                    visualizationData.Add(polyPos);
+                    if (visualizationData.Count > linePositions)
+                        visualizationData.RemoveAt(0);
+                }
             }
         }
 
@@ -268,7 +274,7 @@ namespace Polyfunks
             absX = MathUtils.Clamp01(absX);
             absX = (1.21 * (absX - Math.Pow(absX, 4) / 4));
             return absX * Math.Sign(x);
-            
+
         }
 
         private double LimitSimple(double x)
