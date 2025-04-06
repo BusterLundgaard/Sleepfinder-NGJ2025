@@ -40,7 +40,7 @@ public class TimelineDoctor : MonoBehaviour
         else
         {
             timelineTime = (float)timelineController.playableDirector.time;
-            Debug.Log(DateTime.Now + " - Time: " + timelineTime);
+            // Debug.Log(DateTime.Now + " - Time: " + timelineTime);
             DoctorsNumbers.instance.timelineTime = timelineTime;
 
         }
