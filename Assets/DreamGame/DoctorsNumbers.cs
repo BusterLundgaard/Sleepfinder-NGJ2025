@@ -28,6 +28,7 @@ public class DoctorsNumbers : MonoBehaviour
     public float knob3;
 
     public float timelineTime;
+    bool isCallingAuthority = false;
 
     private void Awake()
     {
@@ -39,23 +40,40 @@ public class DoctorsNumbers : MonoBehaviour
     {
         // live query synced happens after connect and after syncing with the replication server
         _sync.CoherenceBridge.onLiveQuerySynced.AddListener(OnLiveQuerySynced);
+
+        _sync.OnAuthTransferComplete.AddListener(OnAuthTransferComplete);
+    }
+
+    private void OnAuthTransferComplete()
+    {
+        isCallingAuthority = false;
     }
 
     private void OnLiveQuerySynced(CoherenceBridge _)
     {
-        // if I'm the doctor player (PC), request authority.
 
     }
 
     public void Update()
     {
+        // only req authority when connected.
+        if (!PlayerManager.instance.isConnected)
+        {
+            return;
+        }
+
         // doctor always has authority.
-        //if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
-        //{
-        //    _sync.RequestAuthority(AuthorityType.Full);
-        //}
+        if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
+        {
+            if (!isCallingAuthority)
+            {
+                isCallingAuthority = true;
+                _sync.RequestAuthority(AuthorityType.Full);
+            }
+        }
 
     }
+
 
 }
 

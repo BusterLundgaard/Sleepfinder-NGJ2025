@@ -41,6 +41,8 @@ public class PlayerManager : MonoBehaviour
 
     public bool isDoctor { get; private set; }
 
+    public bool isConnected = false;
+
     public GameObject coherenceWorldUI;
     public GameObject coherenceAutoConnectFirstWorldObj;
 
@@ -116,6 +118,9 @@ public class PlayerManager : MonoBehaviour
         selectPlayerTypeUI.SetActive(false);
         // turn on the gameplay stuff.
         enableOnConnected.SetActive(true);
+
+// used to start other gameplay stuff.
+        isConnected = true;
     }
 
 }
