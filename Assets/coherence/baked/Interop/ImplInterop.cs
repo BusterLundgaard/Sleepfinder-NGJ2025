@@ -1881,8 +1881,8 @@ namespace Coherence.Generated
                     var val = new _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.Interop();
 
                     val.knob2 = orig.knob2;
-                    val.knob1 = orig.knob1;
                     val.knob3 = orig.knob3;
+                    val.knob1 = orig.knob1;
 
                     updater.UpdateComponent(entity, componentType, val, 12, component.FieldsMask, component.StoppedMask, frames);
 

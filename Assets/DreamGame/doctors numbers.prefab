@@ -84,7 +84,7 @@ MonoBehaviour:
   OnInputSimulatorConnected:
     m_PersistentCalls:
       m_Calls: []
-  coherenceSyncConfig: {fileID: 11400000, guid: f96c0986df2b040b9a46247912fdd165, type: 2}
+  coherenceSyncConfig: {fileID: 11400000, guid: 801b68257bf314adb8e1bdc7d9fcbe76, type: 2}
   archetype:
     lodLevels:
     - distance: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   bindings:
   - rid: 3698503253466284088
   - rid: 3698503253466284090
-  - rid: 3698503253466284092
   - rid: 3698503253466284094
+  - rid: 3698503261724606673
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -236,51 +236,6 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 3698503253466284092
-      type: {class: FloatBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 3698503253466284093
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: f1839315cc314d1ba53658649233341f
-        archetypeData:
-          type: 4
-          minRange: -9223372036854775808
-          maxRange: 9223372036854775807
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 4
-            bits: 32
-            precision: 0.001
-            floatCompression: 0
-        unityComponent: {fileID: 4182327005028546371}
-        coherenceSync: {fileID: 2140153905471127271}
-        interpolationSettings: {fileID: 0}
-    - rid: 3698503253466284093
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: knob1
-        monoAssemblyType: System.Single, mscorlib
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 1
-        valueSyncCallbackName: 
-        memberType: 4
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: DoctorsNumbers, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.FloatBinding,
-            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
     - rid: 3698503253466284094
       type: {class: FloatBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
       data:
@@ -309,6 +264,51 @@ MonoBehaviour:
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: knob3
+        monoAssemblyType: System.Single, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: DoctorsNumbers, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.FloatBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 3698503261724606673
+      type: {class: FloatBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 3698503261724606674
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 93f24e9de5664636844ecd5972302fea
+        archetypeData:
+          type: 4
+          minRange: -9223372036854775808
+          maxRange: 9223372036854775807
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 4
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 4182327005028546371}
+        coherenceSync: {fileID: 2140153905471127271}
+        interpolationSettings: {fileID: 0}
+    - rid: 3698503261724606674
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: knob1
         monoAssemblyType: System.Single, mscorlib
         required: 0
         enforcesLODingWhenFieldsOverriden: 1

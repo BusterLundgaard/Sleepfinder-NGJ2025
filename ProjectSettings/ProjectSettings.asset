@@ -144,7 +144,7 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 11400000, guid: 9b45c088977614da1855bf2209435931, type: 2}
   - {fileID: 11400000, guid: 8fb9bf8162f894436937f55dbf21a9bf, type: 2}
-  - {fileID: -944628639613478452, guid: 378a738d58ef54c26ad9d2a06d24ca7e, type: 3}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -665,7 +665,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: 
+    Android: SHAPES_URP
     Standalone: 
   additionalCompilerArguments: {}
   platformArchitecture: {}

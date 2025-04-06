@@ -28,19 +28,19 @@ namespace Coherence.Generated
             [FieldOffset(0)]
             public System.Single knob2;
             [FieldOffset(4)]
-            public System.Single knob1;
-            [FieldOffset(8)]
             public System.Single knob3;
+            [FieldOffset(8)]
+            public System.Single knob1;
         }
 
         public void ResetFrame(AbsoluteSimulationFrame frame)
         {
             FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob2Mask;
             knob2SimulationFrame = frame;
-            FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
-            knob1SimulationFrame = frame;
             FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob3Mask;
             knob3SimulationFrame = frame;
+            FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
+            knob1SimulationFrame = frame;
         }
 
         public static unsafe _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
@@ -60,8 +60,8 @@ namespace Coherence.Generated
             var comp = (Interop*)data;
 
             orig.knob2 = comp->knob2;
-            orig.knob1 = comp->knob1;
             orig.knob3 = comp->knob3;
+            orig.knob1 = comp->knob1;
 
             return orig;
         }
@@ -70,12 +70,12 @@ namespace Coherence.Generated
         public static uint knob2Mask => 0b00000000000000000000000000000001;
         public AbsoluteSimulationFrame knob2SimulationFrame;
         public System.Single knob2;
-        public static uint knob1Mask => 0b00000000000000000000000000000010;
-        public AbsoluteSimulationFrame knob1SimulationFrame;
-        public System.Single knob1;
-        public static uint knob3Mask => 0b00000000000000000000000000000100;
+        public static uint knob3Mask => 0b00000000000000000000000000000010;
         public AbsoluteSimulationFrame knob3SimulationFrame;
         public System.Single knob3;
+        public static uint knob1Mask => 0b00000000000000000000000000000100;
+        public AbsoluteSimulationFrame knob1SimulationFrame;
+        public System.Single knob1;
 
         public uint FieldsMask { get; set; }
         public uint StoppedMask { get; set; }
@@ -121,10 +121,10 @@ namespace Coherence.Generated
 
         private static readonly float _knob2_Min = -9223372036854775808f;
         private static readonly float _knob2_Max = 9223372036854775807f;
-        private static readonly float _knob1_Min = -9223372036854775808f;
-        private static readonly float _knob1_Max = 9223372036854775807f;
         private static readonly float _knob3_Min = -9223372036854775808f;
         private static readonly float _knob3_Max = 9223372036854775807f;
+        private static readonly float _knob1_Min = -9223372036854775808f;
+        private static readonly float _knob1_Max = 9223372036854775807f;
 
         public AbsoluteSimulationFrame? GetMinSimulationFrame()
         {
@@ -151,15 +151,15 @@ namespace Coherence.Generated
             otherMask >>= 1;
             if ((otherMask & 0x01) != 0)
             {
-                this.knob1SimulationFrame = other.knob1SimulationFrame;
-                this.knob1 = other.knob1;
+                this.knob3SimulationFrame = other.knob3SimulationFrame;
+                this.knob3 = other.knob3;
             }
 
             otherMask >>= 1;
             if ((otherMask & 0x01) != 0)
             {
-                this.knob3SimulationFrame = other.knob3SimulationFrame;
-                this.knob3 = other.knob3;
+                this.knob1SimulationFrame = other.knob1SimulationFrame;
+                this.knob1 = other.knob1;
             }
 
             otherMask >>= 1;
@@ -199,10 +199,10 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.knob1, _knob1_Min, _knob1_Max, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1", logger);
+                Coherence.Utils.Bounds.Check(data.knob3, _knob3_Min, _knob3_Max, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob3", logger);
 
 
-                var fieldValue = data.knob1;
+                var fieldValue = data.knob3;
 
 
 
@@ -213,10 +213,10 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.knob3, _knob3_Min, _knob3_Max, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob3", logger);
+                Coherence.Utils.Bounds.Check(data.knob1, _knob1_Min, _knob1_Max, "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1", logger);
 
 
-                var fieldValue = data.knob3;
+                var fieldValue = data.knob1;
 
 
 
@@ -246,14 +246,14 @@ namespace Coherence.Generated
             if (bitStream.ReadMask())
             {
 
-                val.knob1 = bitStream.ReadFloat(FloatMeta.NoCompression());
-                val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
+                val.knob3 = bitStream.ReadFloat(FloatMeta.NoCompression());
+                val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob3Mask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.knob3 = bitStream.ReadFloat(FloatMeta.NoCompression());
-                val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob3Mask;
+                val.knob1 = bitStream.ReadFloat(FloatMeta.NoCompression());
+                val.FieldsMask |= _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371.knob1Mask;
             }
 
             val.StoppedMask = stoppedMask;
@@ -266,8 +266,8 @@ namespace Coherence.Generated
         {
             return $"_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371(" +
                 $" knob2: { this.knob2 }" +
-                $" knob1: { this.knob1 }" +
                 $" knob3: { this.knob3 }" +
+                $" knob1: { this.knob1 }" +
                 $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(3, '0') }, " +
                 $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(3, '0') })";
         }

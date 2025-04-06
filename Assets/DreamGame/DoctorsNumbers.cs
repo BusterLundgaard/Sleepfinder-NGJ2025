@@ -7,6 +7,17 @@ using UnityEngine;
 
 public class DoctorsNumbers : MonoBehaviour
 {
+    // lazy
+    private static DoctorsNumbers _instance;
+    public static DoctorsNumbers instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<DoctorsNumbers>();
+            return _instance;
+        }
+    }
 
     // must be same scene for doctor and patient... otherwise we have to find another way to identify the prefab of the doctor.
 
@@ -15,8 +26,6 @@ public class DoctorsNumbers : MonoBehaviour
     public float knob1;
     public float knob2;
     public float knob3;
-
-    public GameObject debugCube;
 
     private void Awake()
     {
@@ -34,17 +43,16 @@ public class DoctorsNumbers : MonoBehaviour
     {
         // if I'm the doctor player (PC), request authority.
 
-        // request authority - always succeeds because it's set to "Steal". 
-        // type = full because Input or State is for server authority stuff
-        if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
-        {
-            _sync.RequestAuthority(AuthorityType.Full);
-        }
     }
 
     public void Update()
     {
-        debugCube.transform.position = Vector3.up * knob1;
+        // doctor always has authority.
+        if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
+        {
+            _sync.RequestAuthority(AuthorityType.Full);
+        }
+
     }
 
 }

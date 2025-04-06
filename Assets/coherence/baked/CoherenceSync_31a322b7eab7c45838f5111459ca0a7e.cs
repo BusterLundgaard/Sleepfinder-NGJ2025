@@ -130,58 +130,6 @@ namespace Coherence.Generated
     }
     
     [UnityEngine.Scripting.Preserve]
-    public class Binding_31a322b7eab7c45838f5111459ca0a7e_f1839315cc314d1ba53658649233341f : FloatBinding
-    {   
-        private global::DoctorsNumbers CastedUnityComponent;
-
-        protected override void OnBindingCloned()
-        {
-    	    CastedUnityComponent = (global::DoctorsNumbers)UnityComponent;
-        }
-
-        public override global::System.Type CoherenceComponentType => typeof(_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371);
-        public override string CoherenceComponentName => "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371";
-        public override uint FieldMask => 0b00000000000000000000000000000010;
-
-        public override System.Single Value
-        {
-            get { return (System.Single)(CastedUnityComponent.knob1); }
-            set { CastedUnityComponent.knob1 = (System.Single)(value); }
-        }
-
-        protected override (System.Single value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
-        {
-            var value = ((_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent).knob1;
-
-            var simFrame = ((_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent).knob1SimulationFrame;
-            
-            return (value, simFrame);
-        }
-
-        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
-        {
-            var update = (_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent;
-            if (Interpolator.IsInterpolationNone)
-            {
-                update.knob1 = Value;
-            }
-            else
-            {
-                update.knob1 = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
-            }
-
-            update.knob1SimulationFrame = simFrame;
-            
-            return update;
-        }
-
-        public override ICoherenceComponentData CreateComponentData()
-        {
-            return new _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371();
-        }    
-    }
-    
-    [UnityEngine.Scripting.Preserve]
     public class Binding_31a322b7eab7c45838f5111459ca0a7e_4304ac5bead4417582779907b92606d3 : FloatBinding
     {   
         private global::DoctorsNumbers CastedUnityComponent;
@@ -193,7 +141,7 @@ namespace Coherence.Generated
 
         public override global::System.Type CoherenceComponentType => typeof(_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371);
         public override string CoherenceComponentName => "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371";
-        public override uint FieldMask => 0b00000000000000000000000000000100;
+        public override uint FieldMask => 0b00000000000000000000000000000010;
 
         public override System.Single Value
         {
@@ -232,6 +180,58 @@ namespace Coherence.Generated
             return new _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371();
         }    
     }
+    
+    [UnityEngine.Scripting.Preserve]
+    public class Binding_31a322b7eab7c45838f5111459ca0a7e_93f24e9de5664636844ecd5972302fea : FloatBinding
+    {   
+        private global::DoctorsNumbers CastedUnityComponent;
+
+        protected override void OnBindingCloned()
+        {
+    	    CastedUnityComponent = (global::DoctorsNumbers)UnityComponent;
+        }
+
+        public override global::System.Type CoherenceComponentType => typeof(_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371);
+        public override string CoherenceComponentName => "_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371";
+        public override uint FieldMask => 0b00000000000000000000000000000100;
+
+        public override System.Single Value
+        {
+            get { return (System.Single)(CastedUnityComponent.knob1); }
+            set { CastedUnityComponent.knob1 = (System.Single)(value); }
+        }
+
+        protected override (System.Single value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
+        {
+            var value = ((_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent).knob1;
+
+            var simFrame = ((_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent).knob1SimulationFrame;
+            
+            return (value, simFrame);
+        }
+
+        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
+        {
+            var update = (_31a322b7eab7c45838f5111459ca0a7e_4182327005028546371)coherenceComponent;
+            if (Interpolator.IsInterpolationNone)
+            {
+                update.knob1 = Value;
+            }
+            else
+            {
+                update.knob1 = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
+            }
+
+            update.knob1SimulationFrame = simFrame;
+            
+            return update;
+        }
+
+        public override ICoherenceComponentData CreateComponentData()
+        {
+            return new _31a322b7eab7c45838f5111459ca0a7e_4182327005028546371();
+        }    
+    }
 
     [UnityEngine.Scripting.Preserve]
     public class CoherenceSync_31a322b7eab7c45838f5111459ca0a7e : CoherenceSyncBaked
@@ -248,8 +248,8 @@ namespace Coherence.Generated
         {
             ["3e39f3213397478c99367d7a571cd99c"] = new Binding_31a322b7eab7c45838f5111459ca0a7e_3e39f3213397478c99367d7a571cd99c(),
             ["a65454f15bbf41a9a27acd16728b92ad"] = new Binding_31a322b7eab7c45838f5111459ca0a7e_a65454f15bbf41a9a27acd16728b92ad(),
-            ["f1839315cc314d1ba53658649233341f"] = new Binding_31a322b7eab7c45838f5111459ca0a7e_f1839315cc314d1ba53658649233341f(),
             ["4304ac5bead4417582779907b92606d3"] = new Binding_31a322b7eab7c45838f5111459ca0a7e_4304ac5bead4417582779907b92606d3(),
+            ["93f24e9de5664636844ecd5972302fea"] = new Binding_31a322b7eab7c45838f5111459ca0a7e_93f24e9de5664636844ecd5972302fea(),
         };
         
         private Dictionary<string, Action<CommandBinding, CommandsHandler>> bakedCommandBindings = new Dictionary<string, Action<CommandBinding, CommandsHandler>>();
