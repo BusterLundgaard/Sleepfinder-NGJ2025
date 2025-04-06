@@ -164,7 +164,10 @@ MonoBehaviour:
       _node: {fileID: -6793537020429020525}
       _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: spin
+        node: {fileID: 6299226182606514926}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -174,6 +177,95 @@ MonoBehaviour:
   inMax: 1
   outMin: 1
   outMax: 1000
+  valueOut: 0
+--- !u!114 &-6672215673039560817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c06638d6e6bc44caebbd77ae4b1673, type: 3}
+  m_Name: Remap
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -472, y: 152}
+  ports:
+    keys:
+    - valueIn
+    - inMin
+    - inMax
+    - outMin
+    - outMax
+    - valueOut
+    values:
+    - _fieldName: valueIn
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: outputz
+        node: {fileID: 6445930529030445165}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: inMin
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: inMax
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: outMin
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: outMax
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: valueOut
+      _node: {fileID: -6672215673039560817}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: a
+        node: {fileID: 5702180060991826868}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  valueIn: 0
+  inMin: 0
+  inMax: 1
+  outMin: 3
+  outMax: -40
   valueOut: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -196,6 +288,8 @@ MonoBehaviour:
   - {fileID: -6793537020429020525}
   - {fileID: 5280291748973532121}
   - {fileID: 4333455170404149623}
+  - {fileID: -6672215673039560817}
+  - {fileID: 5702180060991826868}
   defaultState:
     frequency: 0
     spin: 0
@@ -232,7 +326,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  outputz: 0.21427614986896515
+  outputz: 0.7867951989173889
   polyfunksParameter: knob1
   maxDelta: 0.001
 --- !u!114 &4333455170404149623
@@ -344,7 +438,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  outputz: 0.2938128411769867
+  outputz: 0.9541983604431152
   polyfunksParameter: knob2
   maxDelta: 0.001
 --- !u!114 &5280291748973532121
@@ -426,6 +520,9 @@ MonoBehaviour:
       - fieldName: freq
         node: {fileID: 4333455170404149623}
         reroutePoints: []
+      - fieldName: b
+        node: {fileID: 5702180060991826868}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -436,6 +533,66 @@ MonoBehaviour:
   outMin: 0
   outMax: 39.71
   valueOut: 0
+--- !u!114 &5702180060991826868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdee94f8e56f664e896eb30f049b04d, type: 3}
+  m_Name: Math
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 8, y: 104}
+  ports:
+    keys:
+    - a
+    - b
+    - result
+    values:
+    - _fieldName: a
+      _node: {fileID: 5702180060991826868}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: valueOut
+        node: {fileID: -6672215673039560817}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: b
+      _node: {fileID: 5702180060991826868}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: valueOut
+        node: {fileID: 5280291748973532121}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 5702180060991826868}
+      _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: order
+        node: {fileID: 6299226182606514926}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  a: 0
+  b: 0
+  result: 40.89121689319611
+  mathType: 0
 --- !u!114 &6299226182606514926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +631,10 @@ MonoBehaviour:
       _node: {fileID: 6299226182606514926}
       _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: valueOut
+        node: {fileID: -6793537020429020525}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -483,7 +643,10 @@ MonoBehaviour:
       _node: {fileID: 6299226182606514926}
       _typeQualifiedName: System.Double, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: result
+        node: {fileID: 5702180060991826868}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -540,10 +703,13 @@ MonoBehaviour:
       - fieldName: valueIn
         node: {fileID: -6793537020429020525}
         reroutePoints: []
+      - fieldName: valueIn
+        node: {fileID: -6672215673039560817}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  outputz: 0.2109280824661255
+  outputz: 0
   polyfunksParameter: knob3
   maxDelta: 0.001

@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.085
-    - _Frequency: 0.6451052
+    - _Frequency: 0
     - _KnobValue: 0.219
     - _QueueControl: 0
     - _QueueOffset: 0
