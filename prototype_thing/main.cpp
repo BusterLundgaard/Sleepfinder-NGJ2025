@@ -18,18 +18,6 @@ float om = 0.9;
 float* chosen_param = NULL;
 float* params[3] = {&al, &be, &om};
 
-void draw_bar(char* title, float x, float y, float param, float param_max){
-    DrawTextEx(font, title, Vector2{x-30, y+15}, 30.0, 2.0, BLACK);
-    DrawRectangleLines(x, y, BAR_WIDTH, BAR_HEIGHT, BLACK);
-    DrawRectangle(x,y, int((param/param_max)*BAR_WIDTH), BAR_HEIGHT, BLUE);    
-}
-
-void draw_negative_bar(char* title, float x, float y, float param, float range){
-    DrawTextEx(font, title, Vector2{x-40, y+15}, 30.0, 2.0, BLACK);
-    DrawRectangleLines(x, y, BAR_WIDTH, BAR_HEIGHT, BLACK);
-    DrawRectangle(x, y, int(BAR_WIDTH*abs(param)/range), BAR_HEIGHT, BLUE);
-}
-
 float clamp(float x, float min, float max){
     return (x < min) ? min : ((x > max) ? max : x);
 }
@@ -37,20 +25,6 @@ float clamp(float x, float min, float max){
 int sign(float x){
     if(x < 0){return -1;}
     else {return 1;}
-}
-
-// float fabs(float x){
-//     return (x < 0) ? -x : x;
-// }
-
-float dist1(float x){
-    return abs(x);
-}
-float dist2(float x){
-    return x*x;
-}
-float dist3(float x){
-    return x*x*x*x;
 }
 
 // Returns a random float between 0 and 1
@@ -82,13 +56,7 @@ coefficients generate_coeffs(){
     coefficients c = arrangements[r_int(0, 6)];
     c.A *= r();
     c.B *= r();
-    printf("partial sum: %f\n", c.A*al_o + c.B*be_o);
-    printf("partial sum divided: %f\n", (c.A*al_o + c.B*be_o)/om_o);
-    printf("c.C before: %f\n", c.C);
     c.C *= fabs((c.A*al_o + c.B*be_o)/om_o);
-    printf("c.C after: %f\n", c.C);
-    printf("sum is: %f\n", c.A*al_o + c.B*be_o + c.C*om_o);
-
     return c;
 }
 
@@ -108,9 +76,6 @@ int main()
     coefficients C2 = generate_coeffs();
     coefficients C3 = generate_coeffs();
 
-    printf("Choose %f, %f, %f \n.", al_o, be_o, om_o);
-    printf("Choose C1 = {%f, %f, %f} \n", C1.A, C1.B, C1.C);
-
     while (!WindowShouldClose())
     {
         if(IsKeyDown(KEY_Q)){chosen_param = &al;}
@@ -119,18 +84,6 @@ int main()
 
         bool right_pressed = IsKeyPressed(KEY_D);
         bool left_pressed =  IsKeyPressed(KEY_A);
-        // int key = GetKeyPressed();
-        // while (key > 0) {
-        //     if (key == KEY_RIGHT) {
-        //         right_pressed = true;
-        //         break;
-        //     } 
-        //     if (key == KEY_LEFT) {
-        //         left_pressed = true;
-        //         break;
-        //     }
-        //     key = GetKeyPressed();
-        // }
 
         if(chosen_param != NULL && left_pressed){
             *chosen_param = clamp(*chosen_param - param_step, 0, 1);
@@ -139,34 +92,10 @@ int main()
             *chosen_param = clamp(*chosen_param + param_step, 0, 1);
         }
 
-        if(chosen_param == &al){DrawRectangle(45, 100, 10, 10, BLUE);}
-        if(chosen_param == &be){DrawRectangle(45, 250, 10, 10, BLUE);}
-        if(chosen_param == &om){DrawRectangle(45, 400, 10, 10, BLUE);}
-
-        //float a2 = 0.7*dist2(al-al_o) + 2.3*dist2(be-be_o) + 0.9*(om - om_o);
-        //float a3 = 0.3*dist2(al-al_o) + 0.8*dist2(be-be_o) + 2.2*(om - om_o);
-
-        BeginDrawing();
-        
-        ClearBackground(RAYWHITE);
-        draw_bar("q", 60, 100, al, 1.0);
-        draw_bar("w", 60, 250, be, 1.0);
-        draw_bar("e", 60, 400, om, 1.0);
-
         float a1 = C1.A*al + C1.B*be + C1.C*om;
         float a2 = C2.A*al + C2.B*be + C2.C*om;
         float a3 = C3.A*al + C3.B*be + C3.C*om;
-        
-        //printf("a1 is: %f\n", a1);
-        draw_negative_bar("a1", 1400, 100, a1, 2.0);
-        draw_negative_bar("a2", 1400, 250, a2, 2.0);
-        draw_negative_bar("a3", 1400, 400, a3, 2.0);
-        
-        //draw_bar("a1", 1400, 100, a1, 3.0);
-        //draw_bar("a2", 1400, 250, a2, 3.0);
-        //draw_bar("a3", 1400, 400, a3, 3.0);
 
-        frame++;
         new_frame();
 
         EndDrawing();

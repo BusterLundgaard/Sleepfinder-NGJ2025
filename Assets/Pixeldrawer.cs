@@ -106,6 +106,101 @@ public class Pixeldrawer : MonoBehaviour
         A3 = GenerateCoeffs();
     }
 
+    public RawImage renderSurface;
+
+    const int ROWS = 20;
+    const int COLS = 60;
+    const int WAVE_CONTAINER_WIDTH = 39;
+
+    readonly Color FOREGROUND = Color.green;
+
+    float time = 0f;
+
+    // Drawing character approximation using your pixel functions
+    void DrawChar(int x, int y, char c, Color color)
+    {
+        int height = 14;
+        int width = 8;
+        int X0 = x * width;
+        int X1 = (x + 1) * width;
+        int Y0 = y * height;
+        int Y1 = (y + 1) * height;
+
+        int midY = y * height + height / 2;
+        int midX = x * width + width / 2;
+
+        switch (c)
+        {
+            case '-':
+                for(int i = X0+2; i <= X1-2; i++){DrawPixel(i, midY, color);}            
+                break;
+            case '_':
+                for (int i = X0 + 1; i <= X1 - 1; i++) { DrawPixel(i, Y1-1, color); }
+                break;
+            case '.':
+                for(int i = midX - 1; i <= midX + 1; i++) { DrawPixel(i, Y1 - 2, color);}
+                for (int i = midX - 1; i <= midX + 1; i++) { DrawPixel(i, Y1 - 1, color); }
+                break;
+            case '|':
+                for(int i = Y0 + 1; i <= Y1-1; i++) { DrawPixel(midX, i, color); }
+                break;
+            case '*':
+                draw_rectangle(X0 + 1, midY - 2, 6, 6, color);
+                break;
+            case '~':
+                draw_rectangle(X0 + 3, midY - 2, 2, 4, color);
+                break;
+        }
+    }
+
+    void DrawBar(int x, int y)
+    {
+        for (int i = x; i < x + 4; i++)
+        {
+            DrawChar(i, y, '_', FOREGROUND);
+        }
+
+        for (int i = y + 1; i <= y + 5; i++)
+        {
+            DrawChar(x, i, '|', FOREGROUND);
+            DrawChar(x + 3, i, '|', FOREGROUND);
+        }
+    }
+
+    void DrawWaveContainer(int x, int y)
+    {
+        for (int i = y; i < y + 5; i++)
+        {
+            DrawChar(x, i, '|', FOREGROUND);
+            DrawChar(x + WAVE_CONTAINER_WIDTH, i, '|', FOREGROUND);
+        }
+
+        for (int i = x + 1; i < x + WAVE_CONTAINER_WIDTH; i++)
+        {
+            DrawChar(i, y, '-', FOREGROUND);
+            DrawChar(i, y + 2, '-', FOREGROUND);
+            DrawChar(i, y + 4, '-', FOREGROUND);
+        }
+    }
+
+    void DrawWave(int xStart, int yMid, float amplitude, float frequency, float velocity, Color color)
+    {
+        for (int i = xStart; i < xStart + WAVE_CONTAINER_WIDTH; i++)
+        {
+            int val = Mathf.RoundToInt(6 * amplitude * Mathf.Sin(frequency * i + time * velocity));
+
+            char waveChar = '-';
+            if (val != 0)
+            {
+                waveChar = (val % 2 == 0) ? '*' : '~';
+            }
+
+            int offset = (val >= 0) ? Mathf.RoundToInt((val - 1) / 2f) : Mathf.RoundToInt((val + 1) / 2f);
+
+            DrawChar(i, yMid + offset, waveChar, color);
+        }
+    }
+
     void Update()
     {
         // =============================
@@ -125,16 +220,15 @@ public class Pixeldrawer : MonoBehaviour
         // ==============================
         // DRAWING
         // =============================
-        draw_rectangle(0, 0, width, height, Color.grey);
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                DrawPixel(i, j, Color.red);
+            }
+        }
 
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom, wave_widget_w, wave_widget_h, Color.green);
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom, (int)(wave_widget_w*om), wave_widget_h, Color.blue);
-
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + wave_widget_spacing + wave_widget_h, wave_widget_w, wave_widget_h, Color.green);
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + wave_widget_spacing + wave_widget_h, (int)(wave_widget_w * be), wave_widget_h, Color.blue);
-
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + 2*(wave_widget_spacing + wave_widget_h) , wave_widget_w, wave_widget_h, Color.green);
-        draw_rectangle_lines(wave_widget_margin_left, wave_widget_margin_bottom + 2 * (wave_widget_spacing + wave_widget_h), (int)(wave_widget_w * al), wave_widget_h, Color.blue);
+        //DrawBar(2, 1);
 
         texture.Apply();
     }

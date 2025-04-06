@@ -79,9 +79,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _DitherSpread: 703.2
-    - _Knob1: 0.6899294
-    - _Knob2: 0.8325591
-    - _Knob3: 0.35159865
+    - _Knob1: 0.10285255
+    - _Knob2: 0
+    - _Knob3: 0.19427711
     - _Lerp1: -10.87
     - _Pixelsize: 722.6
     - _QueueControl: 0

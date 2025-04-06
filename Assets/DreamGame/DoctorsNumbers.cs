@@ -48,10 +48,10 @@ public class DoctorsNumbers : MonoBehaviour
     public void Update()
     {
         // doctor always has authority.
-        if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
-        {
-            _sync.RequestAuthority(AuthorityType.Full);
-        }
+        //if (PlayerManager.instance.isDoctor && !_sync.HasStateAuthority)
+        //{
+        //    _sync.RequestAuthority(AuthorityType.Full);
+        //}
 
     }
 
