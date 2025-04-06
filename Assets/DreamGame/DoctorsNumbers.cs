@@ -27,6 +27,8 @@ public class DoctorsNumbers : MonoBehaviour
     public float knob2;
     public float knob3;
 
+    public float timelineTime;
+
     private void Awake()
     {
         _sync = GetComponent<CoherenceSync>();
