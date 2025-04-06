@@ -41,6 +41,7 @@ public class UiToDoctorValues : MonoBehaviour
     public Image knob1, knob2, knob3;  //alpha (al), beta (be), omega (om)
     public Image light1, light2, light3;
     public RawImage sinewave1;
+    Material mat;
     public float paramStep = 0.1f;
     Param selectedParam = Param.None;
 
@@ -93,6 +94,7 @@ public class UiToDoctorValues : MonoBehaviour
     private void Start()
     {
         new_round();
+
     }
 
     void Update()
