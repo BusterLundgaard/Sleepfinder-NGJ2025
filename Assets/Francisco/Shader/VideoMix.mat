@@ -40,6 +40,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8a92a6d093d725a43a22edd9fe57bcb7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_301426a4c3c54621ae21cdb10e3498f7_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 52b1b501a6b3301449094c91562e8f90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_87b827bdfaf74285ba33a812e818b29d_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 72ce589a962632a47a072c3dbf250857, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Video1:
         m_Texture: {fileID: 8400000, guid: 8ef07d294740722469840dd54cb15d55, type: 2}
         m_Scale: {x: 1, y: 1}
@@ -79,9 +87,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _DitherSpread: 0
-    - _Knob1: 1
+    - _Knob1: 0.546
     - _Knob2: 0
-    - _Knob3: 0
+    - _Knob3: 0.313
     - _Lerp1: -10.87
     - _Pixelsize: 64
     - _QueueControl: 0
