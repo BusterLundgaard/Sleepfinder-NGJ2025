@@ -40,6 +40,8 @@ public class UiToDoctorValues : MonoBehaviour
 
     public Image knob1, knob2, knob3;  //alpha (al), beta (be), omega (om)
     public Image light1, light2, light3;
+    public RawImage sinewave1;
+    Material mat;
     public float paramStep = 0.1f;
     Param selectedParam = Param.None;
 
@@ -71,17 +73,28 @@ public class UiToDoctorValues : MonoBehaviour
         A3 = GenerateCoeffs();
     }
 
+    float compute_max(Coefficients coeffs)
+    {
+        float max_neg = 0.0f;
+        float max_pos = 0.0f;
+        if(coeffs.A >= 0) { max_pos += coeffs.A; } else { max_neg += coeffs.A; }
+        if (coeffs.B >= 0) { max_pos += coeffs.B; } else { max_neg += coeffs.B; }
+        if (coeffs.C >= 0) { max_pos += coeffs.C; } else { max_neg += coeffs.C; }
+        return (-max_neg > max_pos) ? -max_neg : max_pos;
+    }
+
     void compute_amplitudes()
     {
-        a1 = A1.A * al + A1.B * be + A1.C * om;
-        a2 = A2.A * al + A2.B * be + A2.C * om;
-        a3 = A3.A * al + A3.B * be + A3.C * om;
+        a1 = Mathf.Abs(A1.A * al + A1.B * be + A1.C * om) / compute_max(A1);
+        a2 = Mathf.Abs(A2.A * al + A2.B * be + A2.C * om) / compute_max(A2);
+        a3 = Mathf.Abs(A3.A * al + A3.B * be + A3.C * om) / compute_max(A3);
     }
 
 
     private void Start()
     {
         new_round();
+
     }
 
     void Update()
@@ -121,6 +134,10 @@ public class UiToDoctorValues : MonoBehaviour
         knob3.transform.eulerAngles = new Vector3(0f, 0f, 90f - 180f * om);
 
         compute_amplitudes();
+
+        Debug.Log("a1 = " + a1.ToString());
+        Debug.Log("a2 = " + a2.ToString());
+        Debug.Log("a3 = " + a3.ToString());
 
         DoctorsNumbers.instance.knob1 = al;
         DoctorsNumbers.instance.knob2 = be;
