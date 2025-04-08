@@ -96,9 +96,9 @@ Material:
     m_Floats:
     - _DitherSpread: 0
     - _DoctorView: 0
-    - _Knob1: 0
-    - _Knob2: 0.17744744
-    - _Knob3: 0.2879336
+    - _Knob1: 0.8238247
+    - _Knob2: 0.5995045
+    - _Knob3: 0
     - _Lerp1: -10.87
     - _Pixelsize: 64
     - _QueueControl: 0
